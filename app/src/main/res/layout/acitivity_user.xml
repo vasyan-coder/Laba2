@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0E1415">
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textColor="@color/onBackground"
+        android:textSize="@dimen/title_text"
         android:textStyle="bold"
         tools:text="Добро пожаловать, Кретин" />
 
@@ -23,9 +23,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
+        android:background="@drawable/round_button"
+        android:drawableEnd="@drawable/baseline_exit_to_app_16"
         android:paddingHorizontal="64dp"
-        android:text="Выйти из аккаунта"
+        android:text="@string/sign_out"
         android:textAllCaps="false"
-        android:textSize="16sp" />
+        android:textColor="@color/black"
+        android:textSize="@dimen/button_text" />
 
 </RelativeLayout>
