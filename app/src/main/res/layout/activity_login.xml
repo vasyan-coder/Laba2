@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:fillViewport="true"
+    android:isScrollContainer="true"
     android:scrollbars="none"
-    tools:context=".LoginActivity"
-    android:isScrollContainer="true">
+    tools:context=".LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,13 +19,13 @@
             android:layout_width="350dp"
             android:layout_height="350dp"
             android:layout_marginTop="16dp"
-            tools:src="@drawable/alpha_logo"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:src="@drawable/alpha_logo" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -43,12 +43,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                tools:text="@string/authorization"
                 android:textColor="@color/onBackground"
                 android:textSize="@dimen/title_text"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="@string/authorization" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etLoginLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -62,14 +63,18 @@
                 app:boxStrokeWidthFocused="0dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_login"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:textColor="@color/onBackground" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etPasswordLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -83,13 +88,17 @@
                 app:boxStrokeWidthFocused="0dp"
                 app:counterEnabled="true"
                 app:counterTextColor="@color/white"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/onBackground">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:maxLength="32"
+                    android:textColor="@color/onBackground" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,7 +119,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-<!--        android:onClick="signInClick"-->
+        <!--        android:onClick="signInClick"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
