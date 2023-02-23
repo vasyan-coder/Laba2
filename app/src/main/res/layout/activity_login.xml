@@ -34,7 +34,7 @@
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="16dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/signInButton"
             app:layout_constraintTop_toBottomOf="@+id/logoImage"
             tools:layout_editor_absoluteX="32dp">
 
@@ -96,7 +96,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/signInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
@@ -110,19 +110,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/secondaryOnBackground"
-            app:boxBackgroundColor="@color/black"
-            app:boxCornerRadiusBottomEnd="15dp"
-            app:boxCornerRadiusBottomStart="15dp"
-            app:boxCornerRadiusTopEnd="15dp"
-            app:boxCornerRadiusTopStart="15dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/button"/>
+<!--        android:onClick="signInClick"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
