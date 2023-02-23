@@ -12,4 +12,5 @@
     <color name="onBackground">#FEFDF8</color>
     <color name="primary">#F7AA2D</color>
     <color name="secondaryOnBackground">#C3C1BC</color>
+    <color name="red">#ff0030</color>
 </resources>

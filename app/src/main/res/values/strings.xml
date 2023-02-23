@@ -5,4 +5,7 @@
     <string name="authorization">Авторизация</string>
     <string name="sign_in">Войти</string>
     <string name="sign_out">Выйти из аккаунта</string>
+
+    <string name="welcome">Добро пожаловать, %1$s</string>
+    <string name="warning_fill">Заполните</string>
 </resources>
