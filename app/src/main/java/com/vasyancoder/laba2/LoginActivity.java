@@ -5,14 +5,19 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.util.Pair;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ScrollView;
 
 import com.vasyancoder.laba2.databinding.ActivityLoginBinding;
 
@@ -65,6 +70,26 @@ public class LoginActivity extends AppCompatActivity {
 
         clearListenerLoginError();
         clearListenerPasswordError();
+
+        binding.getRoot().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int heightDiff = binding.getRoot().getHeight() - binding.getRoot().getHeight();
+                if (heightDiff < 100) {
+                    scrollUpToMyPos();
+                }
+            }
+        });
+
+    }
+
+    private boolean scrollUpToMyPos() {
+        return binding.scrollView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                binding.scrollView.smoothScrollBy(0, (int) binding.signInButton.getY());
+            }
+        }, -2000000000);
     }
 
     private void checkFields() {

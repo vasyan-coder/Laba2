@@ -1,95 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
     android:fillViewport="true"
-    android:isScrollContainer="true"
     android:scrollbars="none"
     tools:context=".LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="32dp">
 
         <ImageView
             android:id="@+id/logoImage"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toTopOf="@+id/title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:src="@drawable/alpha_logo"
-            android:contentDescription="@null" />
+            tools:src="@drawable/alpha_logo" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/onBackground"
+            android:textSize="@dimen/title_text"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/etLoginLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoImage"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="@string/authorization" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etLoginLayout"
+            style="@style/MyTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
             android:layout_marginTop="16dp"
-            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/etPasswordLayout"
+            app:layout_constraintTop_toBottomOf="@+id/title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_login"
+                android:inputType="text"
+                android:maxLength="15"
+                android:textColor="@color/onBackground" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etPasswordLayout"
+            style="@style/MyTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:counterTextColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/forgotPass"
+            app:layout_constraintTop_toBottomOf="@+id/etLoginLayout"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/onBackground">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:maxLength="32"
+                android:textColor="@color/onBackground" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/forgotPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/restore_pass"
+            android:textColor="@color/purple_200"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/signInButton"
-            app:layout_constraintTop_toBottomOf="@+id/logoImage"
-            tools:layout_editor_absoluteX="32dp">
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textColor="@color/onBackground"
-                android:textSize="@dimen/title_text"
-                android:textStyle="bold"
-                tools:text="@string/authorization" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etLoginLayout"
-                style="@style/MyTextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_login"
-                    android:inputType="text"
-                    android:maxLength="15"
-                    android:textColor="@color/onBackground" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etPasswordLayout"
-                style="@style/MyTextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:counterEnabled="true"
-                app:counterTextColor="@color/white"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/onBackground">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_password"
-                    android:inputType="textPassword"
-                    android:maxLength="32"
-                    android:textColor="@color/onBackground" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPasswordLayout"
+            app:layout_constraintVertical_bias="0" />
 
         <Button
             android:id="@+id/signInButton"
@@ -110,4 +123,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

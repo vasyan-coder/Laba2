@@ -8,4 +8,5 @@
 
     <string name="welcome">Добро пожаловать, %1$s</string>
     <string name="warning_fill">Заполните</string>
+    <string name="restore_pass">Забыли пароль? Восстановить</string>
 </resources>
