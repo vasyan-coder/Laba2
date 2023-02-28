@@ -17,4 +17,11 @@
     <string name="name_optional">Name (Optional)</string>
     <string name="surname_optional">Surname (Optional)</string>
     <string name="sign_in">Зарегистрироваться</string>
+
+    <string name="greeting">Приложение "Агрегатор хакатонов" является платформой для поиска и
+        участия в хакатонах по всему миру. Оно предоставляет пользователю возможность быстро и
+        легко находить информацию о проводимых мероприятиях, а также регистрироваться на них.
+    </string>
+    <string name="create_account">Создать аккаунт</string>
+    <string name="have_acc_log_in">Есть аккаунт? Войти</string>
 </resources>
