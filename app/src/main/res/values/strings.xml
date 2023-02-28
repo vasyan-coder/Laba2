@@ -3,10 +3,18 @@
     <string name="hint_login">Login</string>
     <string name="hint_password">Password</string>
     <string name="authorization">Авторизация</string>
-    <string name="sign_in">Войти</string>
+    <string name="log_in">Войти</string>
     <string name="sign_out">Выйти из аккаунта</string>
 
     <string name="welcome">Добро пожаловать, %1$s</string>
     <string name="warning_fill">Заполните</string>
     <string name="restore_pass">Забыли пароль? Восстановить</string>
+    <string name="registration">Нет аккаунта? Зарегистрироваться</string>
+    <string name="registration_title">Регистрация</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="e_mail">e-mail</string>
+    <string name="your_phone">Your phone</string>
+    <string name="name_optional">Name (Optional)</string>
+    <string name="surname_optional">Surname (Optional)</string>
+    <string name="sign_in">Зарегистрироваться</string>
 </resources>
