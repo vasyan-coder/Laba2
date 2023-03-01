@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //Button signInButton = findViewById(R.id.signInButton);
         // programmaly set click
-        binding.signInButton.setOnClickListener(new View.OnClickListener() {
+        binding.logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkFields();
@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         return binding.scrollView.postDelayed(new Runnable() {
             @Override
             public void run() {
-                binding.scrollView.smoothScrollBy(0, (int) binding.signInButton.getY());
+                binding.scrollView.smoothScrollBy(0, (int) binding.logInButton.getY());
             }
         }, -2000000000);
     }
