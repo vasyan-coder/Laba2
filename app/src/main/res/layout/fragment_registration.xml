@@ -142,7 +142,8 @@
             app:counterTextColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/etNameLayout"
             app:layout_constraintTop_toBottomOf="@+id/etEmailLayout"
-            app:prefixText="+7">
+            app:prefixText="+7"
+            app:prefixTextColor="@color/onBackground">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPhone"

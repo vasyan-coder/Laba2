@@ -1,5 +1,6 @@
 package com.vasyancoder.laba2;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,6 +14,8 @@ import android.view.ViewTreeObserver;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
+import android.view.inputmethod.InputMethodManager;
 
 import com.vasyancoder.laba2.databinding.FragmentLoginBinding;
 
@@ -22,6 +25,19 @@ public class LoginFragment extends Fragment {
     private int maxLayoutHeight = 0;
 
     private static final String TAG = "LoginFragment";
+
+    public static final String KEY_BUNDLE_EMAIL = "user_email";
+    public static final String KEY_BUNDLE_PASS = "user_pass";
+
+    public static final String KEY_LOGIN = "user_login";
+    public static final String KEY_RESULT = "requestKey";
+
+    private String email = "";
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
@@ -35,6 +51,19 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         binding.title.setText(R.string.authorization);
 
+        getParentFragmentManager().setFragmentResultListener(KEY_RESULT, this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                binding.etPassword.setText("");                   // clear password
+                String userLogin = result.getString(KEY_LOGIN);
+                binding.etLogin.setText(userLogin);
+                binding.etLogin.setSelection(userLogin.length()); // position cursor at end of text
+                binding.etLogin.requestFocus();                   // focus on etLogin
+            }
+        });
+
+        parseArgs();
+
         //ImageView logoImage = findViewById(R.id.logoImage);
         binding.logoImage.setImageResource(R.drawable.alpha_logo);
 
@@ -46,6 +75,16 @@ public class LoginFragment extends Fragment {
                 checkFields();
             }
         });
+        binding.registration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container_fragment, RegistrationFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
 
         clearListenerLoginError();
         clearListenerPasswordError();
@@ -63,6 +102,7 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
+
     }
 
     private void scrollDownToMyPos() {
@@ -78,6 +118,10 @@ public class LoginFragment extends Fragment {
         if (binding.etLogin.getText().toString().length() != 0 &&
                 binding.etPassword.getText().toString().length() != 0) {
 
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container_fragment, UserFragment.newInstance(binding.etLogin.getText().toString()))
+                    .addToBackStack(null)
+                    .commit();
 
 //            startForResult.launch(UserActivity.newIntentLogin(
 //                    LoginActivity.this,
@@ -136,5 +180,28 @@ public class LoginFragment extends Fragment {
             public void afterTextChanged(Editable editable) {
             }
         });
+    }
+
+    private void parseArgs() {
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            String email = bundle.getString(KEY_BUNDLE_EMAIL);
+            String pass = bundle.getString(KEY_BUNDLE_PASS);
+            binding.etLogin.setText(email);
+            binding.etPassword.setText(pass);
+        }
+    }
+
+    public static LoginFragment newInstance() {
+        return new LoginFragment();
+    }
+
+    public static LoginFragment newInstance(String email, String pass) {
+        LoginFragment loginFragment = new LoginFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(KEY_BUNDLE_EMAIL, email);
+        bundle.putString(KEY_BUNDLE_PASS, pass);
+        loginFragment.setArguments(bundle);
+        return loginFragment;
     }
 }

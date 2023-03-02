@@ -59,9 +59,23 @@ public class GreetingFragment extends Fragment {
         binding.createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container_fragment, RegistrationFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
+
+        binding.logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container_fragment, LoginFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
     }
 
     @Override
