@@ -53,10 +53,12 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.LoginFragment)
-//        }
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.container_fragment, GreetingFragment.class, null)
+                    .commit();
+        }
 
         //TextView title = findViewById(R.id.title);
 //        binding.title.setText(R.string.authorization);
