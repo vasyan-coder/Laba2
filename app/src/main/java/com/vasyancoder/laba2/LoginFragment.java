@@ -1,6 +1,5 @@
 package com.vasyancoder.laba2;
 
-import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,30 +8,26 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
-import android.view.inputmethod.InputMethodManager;
 
+import com.vasyancoder.laba2.databinding.FragmentBottomNavBinding;
 import com.vasyancoder.laba2.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
+
     private int maxLayoutHeight = 0;
 
     private static final String TAG = "LoginFragment";
-
     public static final String KEY_BUNDLE_EMAIL = "user_email";
     public static final String KEY_BUNDLE_PASS = "user_pass";
-
     public static final String KEY_LOGIN = "user_login";
     public static final String KEY_RESULT = "requestKey";
-
-    private String email = "";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,8 +44,43 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.title.setText(R.string.authorization);
 
+        fragmentResultListener();
+        parseArgs();
+
+        setButtonClickListeners();
+
+        clearListenerLoginError();
+        clearListenerPasswordError();
+
+        scrollDownWhenOpenKeyboard();
+
+    }
+
+    private void setButtonClickListeners() {
+        binding.logInButton.setOnClickListener(view1 -> checkFields());
+        binding.registration.setOnClickListener(
+                view12 -> requireActivity().getSupportFragmentManager().beginTransaction()
+
+                        .replace(R.id.container_fragment, RegistrationFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit());
+    }
+
+    private void scrollDownWhenOpenKeyboard() {
+        binding.getRoot().getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            int heightDiff = binding.getRoot().getHeight();
+            if (heightDiff > maxLayoutHeight)
+                maxLayoutHeight = heightDiff;
+            Log.d(TAG, "Layout height = " + heightDiff);
+            if (heightDiff < maxLayoutHeight) {
+                Log.d(TAG, "Open keyboard");
+                scrollDownToMyPos();
+            }
+        });
+    }
+
+    private void fragmentResultListener() {
         getParentFragmentManager().setFragmentResultListener(KEY_RESULT, this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
@@ -61,48 +91,6 @@ public class LoginFragment extends Fragment {
                 binding.etLogin.requestFocus();                   // focus on etLogin
             }
         });
-
-        parseArgs();
-
-        //ImageView logoImage = findViewById(R.id.logoImage);
-        binding.logoImage.setImageResource(R.drawable.alpha_logo);
-
-        //Button signInButton = findViewById(R.id.signInButton);
-        // programmaly set click
-        binding.logInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkFields();
-            }
-        });
-        binding.registration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container_fragment, RegistrationFragment.newInstance())
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-
-        clearListenerLoginError();
-        clearListenerPasswordError();
-
-        binding.getRoot().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                int heightDiff = binding.getRoot().getHeight();
-                if (heightDiff > maxLayoutHeight)
-                    maxLayoutHeight = heightDiff;
-                Log.d(TAG, "Layout height = " + heightDiff);
-                if (heightDiff < maxLayoutHeight) {
-                    Log.d(TAG, "Open keyboard");
-                    scrollDownToMyPos();
-                }
-            }
-        });
-
     }
 
     private void scrollDownToMyPos() {
@@ -119,7 +107,7 @@ public class LoginFragment extends Fragment {
                 binding.etPassword.getText().toString().length() != 0) {
 
             requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container_fragment, UserFragment.newInstance(binding.etLogin.getText().toString()))
+                    .replace(R.id.container_fragment, new BottomNavFragment())
                     .addToBackStack(null)
                     .commit();
 
