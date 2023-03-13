@@ -13,6 +13,7 @@
     <color name="primary">#F7AA2D</color>
     <color name="secondaryOnBackground">#C3C1BC</color>
     <color name="red">#ff0030</color>
+    <color name="menuBackground">#181E1F</color>
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/secondaryOnBackground</color>
 </resources>
