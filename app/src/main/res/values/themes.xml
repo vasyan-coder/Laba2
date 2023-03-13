@@ -29,4 +29,16 @@
         <item name="android:color">@color/primary</item>
     </style>
 
+    <style name="CalenderViewDateCustomText">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/primary</item>
+        <item name="colorControlHighlight">@color/primary</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColor">@drawable/calendar_selector</item>
+    </style>
+
+    <style name="CustomCalendarDay" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/onBackground</item>
+    </style>
+
 </resources>
