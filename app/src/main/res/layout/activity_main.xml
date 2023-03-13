@@ -8,5 +8,4 @@
     android:background="@color/background"
     android:fillViewport="true"
     android:scrollbars="none"
-    tools:context=".LoginActivity" />
-    <!--    android:name="com.vasyancoder.laba2.GreetingFragment"-->
+    tools:context=".MainActivity" />
