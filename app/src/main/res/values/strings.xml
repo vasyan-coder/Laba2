@@ -26,4 +26,6 @@
     <string name="have_acc_log_in">Есть аккаунт? Войти</string>
     <string name="list">List</string>
     <string name="calendar">Calendar</string>
+    <string name="online">Онлайн</string>
+    <string name="offline">Оффлайн</string>
 </resources>

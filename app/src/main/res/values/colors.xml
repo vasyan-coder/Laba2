@@ -12,6 +12,7 @@
     <color name="onBackground">#FEFDF8</color>
     <color name="primary">#F7AA2D</color>
     <color name="secondaryOnBackground">#C3C1BC</color>
+    <color name="thirdOnBackground">#2C3233</color>
     <color name="red">#ff0030</color>
     <color name="menuBackground">#181E1F</color>
 
