@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView"
@@ -22,13 +23,13 @@
             android:layout_marginTop="8dp"
             android:adjustViewBounds="true"
             android:contentDescription="@null"
+            android:src="@drawable/alpha_logo"
             app:layout_constraintBottom_toTopOf="@+id/title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:src="@drawable/alpha_logo" />
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/title"
@@ -36,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
+            android:text="@string/authorization"
             android:textColor="@color/onBackground"
             android:textSize="@dimen/title_text"
             android:textStyle="bold"
@@ -44,8 +46,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logoImage"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:text="@string/authorization" />
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etLoginLayout"
