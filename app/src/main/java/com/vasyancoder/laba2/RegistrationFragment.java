@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.vasyancoder.laba2.databinding.FragmentRegistrationBinding;
 
@@ -17,6 +18,8 @@ public class RegistrationFragment extends Fragment {
     private FragmentRegistrationBinding binding;
 
     private static final String TAG = "RegistrationFragment";
+    public static final String KEY_EMAIL = "email";
+    public static final String KEY_PASS = "password";
 
     @Nullable
     @Override
@@ -29,19 +32,15 @@ public class RegistrationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email = binding.etLogin.getText().toString();
-                String pass = binding.etPassword.getText().toString();
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container_fragment, LoginFragment.newInstance(email, pass))
-                        .commit();
-            }
-        });
-    }
+        binding.signInButton.setOnClickListener(view1 -> {
+            String email = binding.etLogin.getText().toString();
+            String pass = binding.etPassword.getText().toString();
 
-    public static RegistrationFragment newInstance() {
-        return new RegistrationFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(KEY_EMAIL, email);
+            bundle.putString(KEY_PASS, pass);
+
+            Navigation.findNavController(view1).navigate(R.id.action_registrationFragment_to_loginFragment, bundle);
+        });
     }
 }
