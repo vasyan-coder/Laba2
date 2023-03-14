@@ -1,5 +1,7 @@
 package com.vasyancoder.laba2;
 
+import static androidx.navigation.Navigation.findNavController;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -9,9 +11,21 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.vasyancoder.laba2.databinding.FragmentBottomNavBinding;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 public class BottomNavFragment extends Fragment {
 
@@ -28,25 +42,11 @@ public class BottomNavFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        requireActivity().getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_bottom_nav_container, HackathonsListFragment.class, null)
-                .commit();
-
-        binding.bottomNavigation.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.item_list) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_bottom_nav_container, new HackathonsListFragment())
-                        .commit();
-                return true;
-            }
-            if (item.getItemId() == R.id.item_calendar) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_bottom_nav_container, new CalendarFragment())
-                        .commit();
-                return true;
-            }
-            return false;
-        });
+        NavController navController = (
+                (NavHostFragment) Objects.requireNonNull(getChildFragmentManager()
+                        .findFragmentById(R.id.fragment_bottom_nav_container))
+        ).getNavController();
+        NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
     }
 
     @Override
