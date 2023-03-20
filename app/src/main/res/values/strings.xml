@@ -28,4 +28,8 @@
     <string name="calendar">Calendar</string>
     <string name="online">Онлайн</string>
     <string name="offline">Оффлайн</string>
+    <string name="notification">Вызвать уведомление</string>
+
+    <string name="channel_name">calendar_notify</string>
+    <string name="channel_description">calendar_notify_desc</string>
 </resources>
