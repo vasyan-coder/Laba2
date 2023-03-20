@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_nav_graph"
     app:startDestination="@id/fragmentHackathonsList">
 
     <fragment
         android:id="@+id/fragmentHackathonsList"
         android:name="com.vasyancoder.laba2.HackathonsListFragment"
-        android:label="HackathonsListFragment" />
+        android:label="HackathonsListFragment"
+        tools:layout="@layout/fragment_hackathons_list" />
     <fragment
         android:id="@+id/fragmentCalendar"
         android:name="com.vasyancoder.laba2.CalendarFragment"
-        android:label="CalendarFragment" />
+        android:label="CalendarFragment"
+        tools:layout="@layout/fragment_calendar" />
 </navigation>

@@ -9,7 +9,7 @@
         android:id="@+id/greetingFragment"
         android:name="com.vasyancoder.laba2.GreetingFragment"
         android:label="fragment_greeting"
-        tools:layout="@layout/fragment_greeting" >
+        tools:layout="@layout/fragment_greeting">
         <action
             android:id="@+id/action_greetingFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
@@ -21,7 +21,7 @@
         android:id="@+id/registrationFragment"
         android:name="com.vasyancoder.laba2.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" >
+        tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -30,7 +30,7 @@
         android:id="@+id/loginFragment"
         android:name="com.vasyancoder.laba2.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_bottomNavFragment"
             app:destination="@id/bottomNavFragment" />
@@ -41,5 +41,6 @@
     <fragment
         android:id="@+id/bottomNavFragment"
         android:name="com.vasyancoder.laba2.BottomNavFragment"
-        android:label="BottomNavFragment" />
+        android:label="BottomNavFragment"
+        tools:layout="@layout/fragment_bottom_nav" />
 </navigation>
