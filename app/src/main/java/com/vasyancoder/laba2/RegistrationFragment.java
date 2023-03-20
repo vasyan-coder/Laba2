@@ -40,7 +40,8 @@ public class RegistrationFragment extends Fragment {
             bundle.putString(KEY_EMAIL, email);
             bundle.putString(KEY_PASS, pass);
 
-            Navigation.findNavController(view1).navigate(R.id.action_registrationFragment_to_loginFragment, bundle);
+            Navigation.findNavController(view1)
+                    .navigate(R.id.action_registrationFragment_to_loginFragment, bundle);
         });
     }
 }
