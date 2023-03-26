@@ -1,4 +1,4 @@
-package com.vasyancoder.laba2.model;
+package com.vasyancoder.laba2.domain.entity;
 
 public class HackathonListItem {
 
@@ -8,7 +8,11 @@ public class HackathonListItem {
     private final String languages;
     private final boolean status;
 
-    public HackathonListItem(String name, String company, String dateStartEnd, String languages, boolean status) {
+    public HackathonListItem(String name,
+                             String company,
+                             String dateStartEnd,
+                             String languages,
+                             boolean status) {
         this.name = name;
         this.company = company;
         this.dateStartEnd = dateStartEnd;
