@@ -6,13 +6,10 @@ import com.vasyancoder.laba2.domain.entity.RegistrationAccount;
 
 import java.util.List;
 
-public interface Repository {
-
-    boolean createAccount(RegistrationAccount registrationAccount);
+public interface HackathonListRepository {
 
     HackathonListItem getHackathonListItem(int position);
 
     List<HackathonListItem> getHackathonList();
 
-    boolean loginAccount(LoginAccount loginAccount);
 }
