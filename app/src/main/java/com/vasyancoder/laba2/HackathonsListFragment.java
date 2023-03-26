@@ -10,12 +10,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.vasyancoder.laba2.databinding.FragmentHackathonsListBinding;
-import com.vasyancoder.laba2.model.HackathonListAdapter;
-import com.vasyancoder.laba2.model.HackathonListItem;
+import com.vasyancoder.laba2.domain.entity.HackathonListItem;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class HackathonsListFragment extends Fragment {
     private FragmentHackathonsListBinding binding;
