@@ -1,4 +1,4 @@
-package com.vasyancoder.laba2;
+package com.vasyancoder.laba2.ui;
 
 import android.content.res.ColorStateList;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.vasyancoder.laba2.R;
 import com.vasyancoder.laba2.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends Fragment {
@@ -146,7 +147,7 @@ public class LoginFragment extends Fragment {
     private void parseArgs() {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            String email = bundle.getString(RegistrationFragment.KEY_EMAIL);
+            String email = bundle.getString(RegistrationFragment.KEY_LOGIN);
             String pass = bundle.getString(RegistrationFragment.KEY_PASS);
             binding.etLogin.setText(email);
             binding.etPassword.setText(pass);

@@ -1,6 +1,6 @@
 package com.vasyancoder.laba2.domain.usecase;
 
-import com.vasyancoder.laba2.domain.HackathonListRepository;
+import com.vasyancoder.laba2.domain.repository.HackathonListRepository;
 import com.vasyancoder.laba2.domain.entity.HackathonListItem;
 
 import java.util.List;

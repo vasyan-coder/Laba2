@@ -1,4 +1,4 @@
-package com.vasyancoder.laba2.domain;
+package com.vasyancoder.laba2.domain.repository;
 
 import com.vasyancoder.laba2.domain.entity.HackathonListItem;
 

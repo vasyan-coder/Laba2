@@ -1,4 +1,4 @@
-package com.vasyancoder.laba2;
+package com.vasyancoder.laba2.ui.stateholder.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.vasyancoder.laba2.R;
 import com.vasyancoder.laba2.databinding.ItemHackathonListBinding;
 import com.vasyancoder.laba2.domain.entity.HackathonListItem;
 

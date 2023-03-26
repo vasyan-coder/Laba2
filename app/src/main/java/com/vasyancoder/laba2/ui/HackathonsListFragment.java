@@ -1,4 +1,4 @@
-package com.vasyancoder.laba2;
+package com.vasyancoder.laba2.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.vasyancoder.laba2.databinding.FragmentHackathonsListBinding;
 import com.vasyancoder.laba2.domain.entity.HackathonListItem;
+import com.vasyancoder.laba2.ui.stateholder.adapter.HackathonListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

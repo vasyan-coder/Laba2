@@ -32,4 +32,6 @@
 
     <string name="channel_name">calendar_notify</string>
     <string name="channel_description">calendar_notify_desc</string>
+    <string name="necessarily">Обязательно</string>
+    <string name="login_exists">Логин уже занят</string>
 </resources>

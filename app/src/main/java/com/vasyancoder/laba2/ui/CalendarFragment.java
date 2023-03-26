@@ -1,4 +1,4 @@
-package com.vasyancoder.laba2;
+package com.vasyancoder.laba2.ui;
 
 
 import android.app.Notification;
@@ -17,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
+import com.vasyancoder.laba2.CalendarService;
+import com.vasyancoder.laba2.R;
 import com.vasyancoder.laba2.databinding.FragmentCalendarBinding;
 
 public class CalendarFragment extends Fragment {
