@@ -1,13 +1,13 @@
 package com.vasyancoder.laba2.data;
 
 import com.vasyancoder.laba2.data.datasource.UserRemoteDataSource;
-import com.vasyancoder.laba2.domain.UserAccountRepository;
+import com.vasyancoder.laba2.domain.repository.UserAccountRepository;
 import com.vasyancoder.laba2.domain.entity.LoginAccount;
 import com.vasyancoder.laba2.domain.entity.RegistrationAccount;
 
 public class UserAccountRepositoryImpl implements UserAccountRepository {
 
-    private UserRemoteDataSource userRemoteDataSource;
+    private final UserRemoteDataSource userRemoteDataSource = new UserRemoteDataSource();
 
     @Override
     public boolean createAccount(RegistrationAccount registrationAccount) {
