@@ -1,15 +1,13 @@
-package com.vasyancoder.laba2.model;
+package com.vasyancoder.laba2;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.vasyancoder.laba2.R;
 import com.vasyancoder.laba2.databinding.ItemHackathonListBinding;
+import com.vasyancoder.laba2.domain.entity.HackathonListItem;
 
 import java.util.List;
 
