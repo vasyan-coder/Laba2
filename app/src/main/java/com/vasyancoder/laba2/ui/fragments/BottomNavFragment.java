@@ -1,4 +1,4 @@
-package com.vasyancoder.laba2;
+package com.vasyancoder.laba2.ui.fragments;
 
 import static androidx.navigation.Navigation.findNavController;
 
@@ -21,6 +21,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.vasyancoder.laba2.R;
 import com.vasyancoder.laba2.databinding.FragmentBottomNavBinding;
 
 import java.util.HashSet;

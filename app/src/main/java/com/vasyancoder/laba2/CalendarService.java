@@ -7,12 +7,13 @@ import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.IBinder;
 import android.view.Gravity;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
+
+import com.vasyancoder.laba2.ui.MainActivity;
 
 public class CalendarService extends Service {
     @Override

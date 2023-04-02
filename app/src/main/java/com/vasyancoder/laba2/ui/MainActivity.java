@@ -1,4 +1,4 @@
-package com.vasyancoder.laba2;
+package com.vasyancoder.laba2.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
