@@ -1,5 +1,17 @@
 package com.vasyancoder.laba2.ui.stateholder.viewmodel;
 
+import static androidx.core.content.PermissionChecker.checkSelfPermission;
+
+import android.Manifest;
+import android.app.Application;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.PermissionChecker;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -8,11 +20,15 @@ import com.vasyancoder.laba2.data.repositories.UserAccountRepository;
 import com.vasyancoder.laba2.data.models.LoginAccount;
 import com.vasyancoder.laba2.data.protocols.UserAccountProtocol;
 
-public class LoginViewModel extends ViewModel {
+public class LoginViewModel extends AndroidViewModel {
 
-    private final UserAccountProtocol repository = new UserAccountRepository();
+    private final UserAccountProtocol repository = new UserAccountRepository(getApplication());
 
     private final MutableLiveData<Boolean> _errorInputLogin = new MutableLiveData<>();
+
+    public LoginViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public LiveData<Boolean> errorInputLogin() {
         return _errorInputLogin;
@@ -25,11 +41,11 @@ public class LoginViewModel extends ViewModel {
     }
 
 
-    public boolean loginAccount(String login, String pass) {
+    public boolean loginAccount(String login, String pass, boolean allowed) {
         boolean fieldsValid = validateInput(login, pass);
         if (fieldsValid) {
             LoginAccount loginAccount = new LoginAccount(login, pass);
-            return repository.loginAccount(loginAccount);
+            return repository.loginAccount(loginAccount, allowed);
         }
         return false;
     }

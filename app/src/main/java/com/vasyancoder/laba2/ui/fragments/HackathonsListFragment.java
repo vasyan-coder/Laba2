@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.vasyancoder.laba2.R;
-import com.vasyancoder.laba2.data.models.HackathonListItem;
+import com.vasyancoder.laba2.data.db.entities.HackathonListItem;
 import com.vasyancoder.laba2.databinding.FragmentHackathonsListBinding;
 import com.vasyancoder.laba2.ui.stateholder.adapter.HackathonListAdapter;
 import com.vasyancoder.laba2.ui.stateholder.viewmodel.HackathonsListViewModel;

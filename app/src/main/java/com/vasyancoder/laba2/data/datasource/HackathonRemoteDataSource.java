@@ -1,14 +1,31 @@
 package com.vasyancoder.laba2.data.datasource;
 
+import android.content.Context;
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.vasyancoder.laba2.data.models.HackathonListItem;
+import com.vasyancoder.laba2.data.db.HackathonDatabase;
+import com.vasyancoder.laba2.data.db.dao.HackathonDao;
+import com.vasyancoder.laba2.data.db.entities.HackathonListItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HackathonRemoteDataSource {
+
+    private final Context context;
+
+    public HackathonRemoteDataSource(Context context) {
+        this.context = context;
+    }
+
+    public LiveData<HackathonListItem> getHackathonListItem(int position) {
+        HackathonDatabase db = HackathonDatabase.getDatabase(context);
+        HackathonDao hackathonDao = db.hackathonDao();
+        return hackathonDao.getItem(position + 1);
+    }
 
     public LiveData<List<HackathonListItem>> getHackathonList() {
         List<HackathonListItem> hackathonListItems = new ArrayList<>();
@@ -33,8 +50,16 @@ public class HackathonRemoteDataSource {
                     )
             );
         }
-        MutableLiveData<List<HackathonListItem>> hackathonListItemsLD = new MutableLiveData<>();
-        hackathonListItemsLD.setValue(hackathonListItems);
-        return hackathonListItemsLD;
+
+        HackathonDatabase db = HackathonDatabase.getDatabase(context);
+        HackathonDao hackathonDao = db.hackathonDao();
+        db.getQueryExecutor().execute(() -> {
+            for (HackathonListItem hackathon : hackathonListItems) {
+                hackathonDao.insert(hackathon);
+                Log.d("myLogs", String.valueOf(hackathon.uid));
+            }
+        });
+
+        return hackathonDao.getHackathonsList();
     }
 }

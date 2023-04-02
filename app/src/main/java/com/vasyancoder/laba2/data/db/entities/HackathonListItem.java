@@ -1,12 +1,28 @@
-package com.vasyancoder.laba2.data.models;
+package com.vasyancoder.laba2.data.db.entities;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "hackathon_table")
 public class HackathonListItem {
 
-    private final String name;
-    private final String company;
-    private final String dateStartEnd;
-    private final String languages;
-    private final boolean status;
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "id")
+    public Integer uid;
+
+    @ColumnInfo(name = "name")
+    public String name;
+    @ColumnInfo(name = "company")
+    public String company;
+    @ColumnInfo(name = "dateStartEnd")
+    public String dateStartEnd;
+    @ColumnInfo(name = "languages")
+    public String languages;
+    @ColumnInfo(name = "status")
+    public boolean status;
 
     public HackathonListItem(String name,
                              String company,
