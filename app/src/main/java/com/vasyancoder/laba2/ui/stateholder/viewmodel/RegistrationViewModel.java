@@ -1,5 +1,9 @@
 package com.vasyancoder.laba2.ui.stateholder.viewmodel;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -8,11 +12,15 @@ import com.vasyancoder.laba2.data.repositories.UserAccountRepository;
 import com.vasyancoder.laba2.data.models.RegistrationAccount;
 import com.vasyancoder.laba2.data.protocols.UserAccountProtocol;
 
-public class RegistrationViewModel extends ViewModel {
+public class RegistrationViewModel extends AndroidViewModel {
 
-    private final UserAccountProtocol repository = new UserAccountRepository();
+    private final UserAccountProtocol repository = new UserAccountRepository(getApplication());
 
     private final MutableLiveData<Boolean> _errorInputLogin = new MutableLiveData<>();
+
+    public RegistrationViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public LiveData<Boolean> errorInputLogin() {
         return _errorInputLogin;
