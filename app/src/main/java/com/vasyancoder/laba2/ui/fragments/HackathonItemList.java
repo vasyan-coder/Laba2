@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.vasyancoder.laba2.R;
 import com.vasyancoder.laba2.databinding.FragmentHackathonItemListBinding;
-import com.vasyancoder.laba2.data.models.HackathonListItem;
+import com.vasyancoder.laba2.data.db.entities.HackathonListItem;
 import com.vasyancoder.laba2.ui.stateholder.viewmodel.HackathonItemListViewModel;
 
 public class HackathonItemList extends Fragment {
@@ -49,7 +49,7 @@ public class HackathonItemList extends Fragment {
     }
 
     private void observeViewModel() {
-        viewModel.hackathonListItem().observe(getViewLifecycleOwner(), new Observer<HackathonListItem>() {
+        viewModel.hackathonListItem.observe(getViewLifecycleOwner(), new Observer<HackathonListItem>() {
             @Override
             public void onChanged(HackathonListItem item) {
                 binding.name.setText(item.getName());
