@@ -1,5 +1,7 @@
 package com.vasyancoder.laba2.ui.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,6 +22,7 @@ import com.vasyancoder.laba2.ui.stateholder.viewmodel.RegistrationViewModel;
 
 public class RegistrationFragment extends Fragment {
 
+    private static final String SHARED_PREF_LOGIN = "login";
     private FragmentRegistrationBinding binding;
 
     public static final String KEY_LOGIN = "login";
@@ -41,6 +44,12 @@ public class RegistrationFragment extends Fragment {
         addTextChangeListeners();
         observeViewModel();
 
+        // read
+        SharedPreferences sharedPrefRead =
+                requireActivity().getPreferences(Context.MODE_PRIVATE);
+        String loginSP = sharedPrefRead.getString(SHARED_PREF_LOGIN, "");
+        binding.etLogin.setText(loginSP);
+
         binding.signInButton.setOnClickListener(view1 -> {
             String login = binding.etLogin.getText().toString();
             String pass = binding.etPassword.getText().toString();
@@ -48,6 +57,15 @@ public class RegistrationFragment extends Fragment {
             String phone = binding.etPhone.getText().toString();
             String name = binding.etName.getText().toString();
             String surname = binding.etSurname.getText().toString();
+
+            // write
+            SharedPreferences sharedPrefWrite =
+                    requireActivity().getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPrefWrite.edit();
+            editor.putString(SHARED_PREF_LOGIN,
+                    login);
+            editor.apply();
+
 
             if (viewModel.createAccount(
                     login,
