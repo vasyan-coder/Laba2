@@ -1,7 +1,7 @@
 package com.vasyancoder.laba2.data.datasource;
 
-import com.vasyancoder.laba2.domain.entity.LoginAccount;
-import com.vasyancoder.laba2.domain.entity.RegistrationAccount;
+import com.vasyancoder.laba2.data.models.LoginAccount;
+import com.vasyancoder.laba2.data.models.RegistrationAccount;
 
 public class UserRemoteDataSource {
 
@@ -15,5 +15,4 @@ public class UserRemoteDataSource {
                 !registrationAccount.getEmail().equals("") &&
                 !registrationAccount.getPhone().equals("");
     }
-
 }

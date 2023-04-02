@@ -7,12 +7,21 @@
 
     <fragment
         android:id="@+id/fragmentHackathonsList"
-        android:name="com.vasyancoder.laba2.ui.HackathonsListFragment"
+        android:name="com.vasyancoder.laba2.ui.fragments.HackathonsListFragment"
         android:label="HackathonsListFragment"
-        tools:layout="@layout/fragment_hackathons_list" />
+        tools:layout="@layout/fragment_hackathons_list" >
+        <action
+            android:id="@+id/action_fragmentHackathonsList_to_hackathonItemList"
+            app:destination="@id/hackathonItemList" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentCalendar"
-        android:name="com.vasyancoder.laba2.ui.CalendarFragment"
+        android:name="com.vasyancoder.laba2.ui.fragments.CalendarFragment"
         android:label="CalendarFragment"
         tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/hackathonItemList"
+        android:name="com.vasyancoder.laba2.ui.fragments.HackathonItemList"
+        android:label="HackathonItemList"
+        tools:layout="@layout/fragment_hackathon_item_list"/>
 </navigation>

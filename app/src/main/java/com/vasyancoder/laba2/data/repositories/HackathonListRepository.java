@@ -1,5 +1,7 @@
 package com.vasyancoder.laba2.data.repositories;
 
+import androidx.lifecycle.LiveData;
+
 import com.vasyancoder.laba2.data.datasource.HackathonRemoteDataSource;
 import com.vasyancoder.laba2.data.protocols.HackathonListProtocol;
 import com.vasyancoder.laba2.data.models.HackathonListItem;
@@ -12,11 +14,11 @@ public class HackathonListRepository implements HackathonListProtocol {
 
     @Override
     public HackathonListItem getHackathonListItem(int position) {
-        return hackathonRemoteDataSource.getHackathonList().get(position);
+        return hackathonRemoteDataSource.getHackathonList().getValue().get(position);
     }
 
     @Override
-    public List<HackathonListItem> getHackathonList() {
+    public LiveData<List<HackathonListItem>> getHackathonList() {
         return hackathonRemoteDataSource.getHackathonList();
     }
 }

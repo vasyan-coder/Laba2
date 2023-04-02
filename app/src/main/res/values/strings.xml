@@ -34,4 +34,7 @@
     <string name="channel_description">calendar_notify_desc</string>
     <string name="necessarily">Обязательно</string>
     <string name="login_exists">Логин уже занят</string>
+    <string name="registration_data">Данные о регистрации:</string>
+    <string name="languages">Языки:</string>
+    <string name="format">Формат проведения:</string>
 </resources>
