@@ -1,4 +1,4 @@
-package com.vasyancoder.laba2.ui;
+package com.vasyancoder.laba2.ui.fragments;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,7 +16,6 @@ import androidx.navigation.Navigation;
 
 import com.vasyancoder.laba2.R;
 import com.vasyancoder.laba2.databinding.FragmentRegistrationBinding;
-import com.vasyancoder.laba2.domain.entity.RegistrationAccount;
 import com.vasyancoder.laba2.ui.stateholder.viewmodel.RegistrationViewModel;
 
 public class RegistrationFragment extends Fragment {

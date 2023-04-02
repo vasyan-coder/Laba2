@@ -1,12 +1,12 @@
-package com.vasyancoder.laba2.data;
+package com.vasyancoder.laba2.data.repositories;
 
 import com.vasyancoder.laba2.data.datasource.HackathonRemoteDataSource;
-import com.vasyancoder.laba2.domain.repository.HackathonListRepository;
-import com.vasyancoder.laba2.domain.entity.HackathonListItem;
+import com.vasyancoder.laba2.data.protocols.HackathonListProtocol;
+import com.vasyancoder.laba2.data.models.HackathonListItem;
 
 import java.util.List;
 
-public class HackathonListRepositoryImpl implements HackathonListRepository {
+public class HackathonListRepository implements HackathonListProtocol {
 
     private final HackathonRemoteDataSource hackathonRemoteDataSource = new HackathonRemoteDataSource();
 

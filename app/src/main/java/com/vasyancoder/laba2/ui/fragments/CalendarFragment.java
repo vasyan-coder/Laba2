@@ -1,4 +1,4 @@
-package com.vasyancoder.laba2.ui;
+package com.vasyancoder.laba2.ui.fragments;
 
 
 import android.app.Notification;

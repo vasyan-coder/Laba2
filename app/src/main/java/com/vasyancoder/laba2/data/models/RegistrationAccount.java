@@ -1,4 +1,4 @@
-package com.vasyancoder.laba2.domain.entity;
+package com.vasyancoder.laba2.data.models;
 
 public class RegistrationAccount {
     private final String login;
