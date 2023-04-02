@@ -1,19 +1,27 @@
-package com.vasyancoder.laba2;
+package com.vasyancoder.laba2.ui.stateholder.adapter;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.vasyancoder.laba2.R;
 import com.vasyancoder.laba2.databinding.ItemHackathonListBinding;
-import com.vasyancoder.laba2.domain.entity.HackathonListItem;
+import com.vasyancoder.laba2.data.models.HackathonListItem;
 
 import java.util.List;
 
 public class HackathonListAdapter extends RecyclerView.Adapter<HackathonListAdapter.ViewHolder> {
 
     private final List<HackathonListItem> hackathonListItems;
+
+    public OnHackathonItemListClickListener onHackathonItemListClickListener = null;
+
+    public interface OnHackathonItemListClickListener {
+        void onHackathonItemListClickListener(int position);
+    }
 
     public HackathonListAdapter(List<HackathonListItem> hackathonListItems) {
         this.hackathonListItems = hackathonListItems;
@@ -40,6 +48,13 @@ public class HackathonListAdapter extends RecyclerView.Adapter<HackathonListAdap
             holder.binding.status.setText(R.string.online);
         else
             holder.binding.status.setText(R.string.offline);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onHackathonItemListClickListener.onHackathonItemListClickListener(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override

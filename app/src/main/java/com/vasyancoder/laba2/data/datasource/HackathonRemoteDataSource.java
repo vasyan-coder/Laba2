@@ -1,13 +1,16 @@
 package com.vasyancoder.laba2.data.datasource;
 
-import com.vasyancoder.laba2.domain.entity.HackathonListItem;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import com.vasyancoder.laba2.data.models.HackathonListItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HackathonRemoteDataSource {
 
-    public List<HackathonListItem> getHackathonList() {
+    public LiveData<List<HackathonListItem>> getHackathonList() {
         List<HackathonListItem> hackathonListItems = new ArrayList<>();
 
         String[] names = {"TRUE TECH HACK", "BRAINSTORM"};
@@ -30,7 +33,8 @@ public class HackathonRemoteDataSource {
                     )
             );
         }
-
-        return hackathonListItems;
+        MutableLiveData<List<HackathonListItem>> hackathonListItemsLD = new MutableLiveData<>();
+        hackathonListItemsLD.setValue(hackathonListItems);
+        return hackathonListItemsLD;
     }
 }

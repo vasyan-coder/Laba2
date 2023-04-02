@@ -9,7 +9,7 @@
     android:background="@color/background"
     android:fillViewport="true"
     android:scrollbars="none"
-    tools:context=".LoginFragment">
+    tools:context=".ui.fragments.LoginFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
