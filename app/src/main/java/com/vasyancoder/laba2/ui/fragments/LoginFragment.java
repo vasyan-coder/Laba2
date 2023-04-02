@@ -1,5 +1,8 @@
 package com.vasyancoder.laba2.ui.fragments;
 
+import static androidx.core.content.PermissionChecker.checkSelfPermission;
+
+import android.Manifest;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +13,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.PermissionChecker;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -52,7 +57,9 @@ public class LoginFragment extends Fragment {
         binding.logInButton.setOnClickListener(view -> {
             if (viewModel.loginAccount(
                     binding.etLogin.getText().toString(),
-                    binding.etPassword.getText().toString())
+                    binding.etPassword.getText().toString(),
+                    allowedPermission()
+            )
             ) {
                 Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_bottomNavFragment);
             }
@@ -61,6 +68,16 @@ public class LoginFragment extends Fragment {
                 view ->
                         Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registrationFragment)
         );
+    }
+
+    private boolean allowedPermission() {
+        if (checkSelfPermission(requireContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PermissionChecker.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            return false;
+        }
     }
 
     private void scrollDownWhenOpenKeyboard() {

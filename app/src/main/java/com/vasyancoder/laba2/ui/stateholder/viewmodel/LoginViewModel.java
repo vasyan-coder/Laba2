@@ -1,8 +1,16 @@
 package com.vasyancoder.laba2.ui.stateholder.viewmodel;
 
+import static androidx.core.content.PermissionChecker.checkSelfPermission;
+
+import android.Manifest;
 import android.app.Application;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.PermissionChecker;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -33,11 +41,11 @@ public class LoginViewModel extends AndroidViewModel {
     }
 
 
-    public boolean loginAccount(String login, String pass) {
+    public boolean loginAccount(String login, String pass, boolean allowed) {
         boolean fieldsValid = validateInput(login, pass);
         if (fieldsValid) {
             LoginAccount loginAccount = new LoginAccount(login, pass);
-            return repository.loginAccount(loginAccount);
+            return repository.loginAccount(loginAccount, allowed);
         }
         return false;
     }

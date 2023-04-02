@@ -7,6 +7,6 @@ public interface UserAccountProtocol {
 
     boolean createAccount(RegistrationAccount registrationAccount);
 
-    boolean loginAccount(LoginAccount loginAccount);
+    boolean loginAccount(LoginAccount loginAccount, boolean allowed);
 
 }

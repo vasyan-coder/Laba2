@@ -21,7 +21,7 @@ public class UserAccountRepository implements UserAccountProtocol {
     }
 
     @Override
-    public boolean loginAccount(LoginAccount loginAccount) {
-        return userRemoteDataSource.checkLoginValid(loginAccount);
+    public boolean loginAccount(LoginAccount loginAccount, boolean allowed) {
+        return userRemoteDataSource.checkLoginValid(loginAccount, allowed);
     }
 }

@@ -1,6 +1,8 @@
 package com.vasyancoder.laba2.data.datasource;
 
 import android.content.Context;
+import android.os.Environment;
+import android.util.Log;
 
 import com.vasyancoder.laba2.data.models.LoginAccount;
 import com.vasyancoder.laba2.data.models.RegistrationAccount;
@@ -20,7 +22,23 @@ public class UserRemoteDataSource {
         this.context = context;
     }
 
-    public boolean checkLoginValid(LoginAccount loginAccount) {
+    public boolean checkLoginValid(LoginAccount loginAccount, boolean allowed) {
+        if (allowed) {
+            String filename = "login";
+            String fileContents = loginAccount.getLogin();
+            File file_login = new File("/storage/emulated/0/Android/data", filename);
+            try {
+                FileOutputStream fos = new FileOutputStream(file_login);
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
+                writer.write(fileContents);
+                writer.close();
+                fos.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
         return !loginAccount.getLogin().equals("") && !loginAccount.getPassword().equals("");
     }
 
