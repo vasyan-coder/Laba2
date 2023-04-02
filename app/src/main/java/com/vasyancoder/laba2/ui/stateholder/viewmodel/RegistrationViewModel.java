@@ -6,11 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-import com.vasyancoder.laba2.data.repositories.UserAccountRepository;
 import com.vasyancoder.laba2.data.models.RegistrationAccount;
 import com.vasyancoder.laba2.data.protocols.UserAccountProtocol;
+import com.vasyancoder.laba2.data.repositories.UserAccountRepository;
 
 public class RegistrationViewModel extends AndroidViewModel {
 
@@ -51,6 +50,9 @@ public class RegistrationViewModel extends AndroidViewModel {
                                  String name,
                                  String surname
     ) {
+
+        dbRecord();
+
         boolean fieldsValid = validateInput(
                 login,
                 pass,
@@ -69,6 +71,10 @@ public class RegistrationViewModel extends AndroidViewModel {
             return repository.createAccount(registrationAccount);
         }
         return false;
+    }
+
+    private void dbRecord() {
+
     }
 
     private boolean validateInput(String login,

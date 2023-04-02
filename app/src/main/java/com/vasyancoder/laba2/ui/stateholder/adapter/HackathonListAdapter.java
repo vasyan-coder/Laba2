@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.vasyancoder.laba2.R;
 import com.vasyancoder.laba2.databinding.ItemHackathonListBinding;
-import com.vasyancoder.laba2.data.models.HackathonListItem;
+import com.vasyancoder.laba2.data.db.entities.HackathonListItem;
 
 import java.util.List;
 
