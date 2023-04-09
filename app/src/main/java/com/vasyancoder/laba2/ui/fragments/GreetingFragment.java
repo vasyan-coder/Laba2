@@ -34,17 +34,6 @@ public class GreetingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Intent intent = requireActivity().getIntent();
-        if (intent != null) {
-            String action = intent.getAction();
-            String type = intent.getType();
-            if (Intent.ACTION_SEND.equals(action) && type != null) {
-                if (type.equalsIgnoreCase("text/plain")) {
-                    Navigation.findNavController(view).navigate(R.id.action_greetingFragment_to_loginFragment);
-                }
-            }
-        }
-
         binding.createAccount.setOnClickListener(view1 ->
                 Navigation.findNavController(view1).navigate(R.id.action_greetingFragment_to_registrationFragment));
 
