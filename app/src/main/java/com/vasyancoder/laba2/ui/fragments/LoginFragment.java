@@ -35,6 +35,8 @@ public class LoginFragment extends Fragment {
 
     private LoginViewModel viewModel;
 
+    public final static String KEY_LOGIN = "login";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,18 +47,6 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        Intent intent = requireActivity().getIntent();
-        if (intent != null) {
-            String action = intent.getAction();
-            String type = intent.getType();
-            if (Intent.ACTION_SEND.equals(action) && type != null) {
-                if (type.equalsIgnoreCase("text/plain")) {
-                    String textData = intent.getStringExtra(Intent.EXTRA_TEXT);
-                    binding.etLogin.setText(textData);
-                }
-            }
-        }
 
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         parseArgs();
@@ -169,10 +159,15 @@ public class LoginFragment extends Fragment {
     private void parseArgs() {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            String email = bundle.getString(RegistrationFragment.KEY_LOGIN);
-            String pass = bundle.getString(RegistrationFragment.KEY_PASS);
-            binding.etLogin.setText(email);
-            binding.etPassword.setText(pass);
+            if (bundle.getString(KEY_LOGIN) == null) {
+                String login = bundle.getString(RegistrationFragment.KEY_LOGIN);
+                String pass = bundle.getString(RegistrationFragment.KEY_PASS);
+                binding.etLogin.setText(login);
+                binding.etPassword.setText(pass);
+            } else {
+                String login = bundle.getString(RegistrationFragment.KEY_LOGIN);
+                binding.etLogin.setText(login);
+            }
         }
     }
 }
