@@ -3,6 +3,7 @@ package com.vasyancoder.laba2.ui.fragments;
 import static androidx.core.content.PermissionChecker.checkSelfPermission;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -44,6 +45,19 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Intent intent = requireActivity().getIntent();
+        if (intent != null) {
+            String action = intent.getAction();
+            String type = intent.getType();
+            if (Intent.ACTION_SEND.equals(action) && type != null) {
+                if (type.equalsIgnoreCase("text/plain")) {
+                    String textData = intent.getStringExtra(Intent.EXTRA_TEXT);
+                    binding.etLogin.setText(textData);
+                }
+            }
+        }
+
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         parseArgs();
         addTextChangeListeners();
