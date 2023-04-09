@@ -1,11 +1,14 @@
 package com.vasyancoder.laba2.ui.fragments;
 
 
+import static java.net.Proxy.Type.HTTP;
+
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -43,6 +46,12 @@ public class CalendarFragment extends Fragment {
 
             Intent intent = new Intent(requireContext(), CalendarService.class);
             requireActivity().startService(intent);
+        });
+        binding.shareBtn.setOnClickListener(view1 -> {
+            Intent textIntent = new Intent(Intent.ACTION_SEND);
+            textIntent.setType("text/plain");
+            textIntent.putExtra(Intent.EXTRA_TEXT, "Присоединяйтесь к HackApp");
+            requireActivity().startActivity(textIntent);
         });
     }
 
