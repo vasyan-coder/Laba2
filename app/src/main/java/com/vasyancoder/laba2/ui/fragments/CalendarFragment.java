@@ -8,6 +8,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,6 +41,11 @@ public class CalendarFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         createNotificationChannel();
+
+
+
+        AnimatedVectorDrawable drawable = (AnimatedVectorDrawable) binding.animDone.getDrawable();
+        drawable.start();
 
         binding.notifyBtn.setOnClickListener(view1 -> {
             showNotification();
