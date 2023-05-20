@@ -11,6 +11,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.vasyancoder.laba2.data.models.Post;
 import com.vasyancoder.laba2.data.repositories.HackathonListRepository;
 
+import java.util.List;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -55,6 +56,19 @@ public class CalendarViewModel extends AndroidViewModel {
             }
         });
 
+        repository.getAllPosts().enqueue(new Callback<List<Post>>() {
+            @Override
+            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+                if (response.isSuccessful()) {
+                    List<Post> posts = response.body();
+                    listPostsLiveData.setValue(posts);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Post>> call, Throwable t) {
+            }
+        });
 
     }
 
@@ -71,5 +85,11 @@ public class CalendarViewModel extends AndroidViewModel {
 
     public LiveData<Post> getPushResponseLiveData() {
         return pushResponseLiveData;
+    }
+
+    private MutableLiveData<List<Post>> listPostsLiveData = new MutableLiveData<>();
+
+    public LiveData<List<Post>> getListPostsLiveData() {
+        return listPostsLiveData;
     }
 }

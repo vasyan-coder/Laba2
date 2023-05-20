@@ -30,6 +30,8 @@ import com.vasyancoder.laba2.databinding.FragmentCalendarBinding;
 import com.vasyancoder.laba2.ui.stateholder.viewmodel.CalendarViewModel;
 import com.vasyancoder.laba2.ui.stateholder.viewmodel.HackathonsListViewModel;
 
+import java.util.List;
+
 import retrofit2.Response;
 
 public class CalendarFragment extends Fragment {
@@ -64,7 +66,12 @@ public class CalendarFragment extends Fragment {
                 binding.textPost.setText("Post: " + postResponse.getTitle());
             }
         });
-
+        viewModel.getListPostsLiveData().observe(getViewLifecycleOwner(), new Observer<List<Post>>() {
+            @Override
+            public void onChanged(List<Post> posts) {
+                binding.textGet2.setText("Get: " + posts.get(10).getTitle());
+            }
+        });
         AnimatedVectorDrawable drawable = (AnimatedVectorDrawable) binding.animDone.getDrawable();
         drawable.start();
 

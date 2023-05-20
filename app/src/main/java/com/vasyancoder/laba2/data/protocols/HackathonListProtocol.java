@@ -21,4 +21,6 @@ public interface HackathonListProtocol {
 
     Call<Post> pushPost(@Body Post post);
 
+    Call<List<Post>> getAllPosts();
+
 }

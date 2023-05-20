@@ -61,4 +61,12 @@ public class HackathonListRepository implements HackathonListProtocol {
         Call<Post> call = postAPI.pushPost(post);
         return call;
     }
+
+    @Override
+    public Call<List<Post>> getAllPosts() {
+        Retrofit retrofit = RetrofitFactory.getRetrofit();
+        PostAPI postAPI = retrofit.create(PostAPI.class);
+        Call<List<Post>> call = postAPI.getAllPosts();
+        return call;
+    }
 }
