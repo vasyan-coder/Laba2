@@ -20,15 +20,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.vasyancoder.laba2.CalendarService;
 import com.vasyancoder.laba2.R;
+import com.vasyancoder.laba2.data.models.Post;
 import com.vasyancoder.laba2.databinding.FragmentCalendarBinding;
+import com.vasyancoder.laba2.ui.stateholder.viewmodel.CalendarViewModel;
+import com.vasyancoder.laba2.ui.stateholder.viewmodel.HackathonsListViewModel;
 
 public class CalendarFragment extends Fragment {
     private FragmentCalendarBinding binding;
 
     private static final String CHANNEL_ID = "calendar";
+
+    private CalendarViewModel viewModel;
 
     @Nullable
     @Override
@@ -40,9 +47,15 @@ public class CalendarFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(CalendarViewModel.class);
         createNotificationChannel();
 
-
+        viewModel.getPostLiveData().observe(getViewLifecycleOwner(), new Observer<Post>() {
+            @Override
+            public void onChanged(Post post) {
+                binding.textGet.setText("Get: " + post.getTitle());
+            }
+        });
 
         AnimatedVectorDrawable drawable = (AnimatedVectorDrawable) binding.animDone.getDrawable();
         drawable.start();

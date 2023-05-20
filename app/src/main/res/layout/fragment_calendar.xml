@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/background">
 
     <ImageView
@@ -11,6 +12,7 @@
         android:layout_height="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:visibility="gone"
         android:src="@drawable/done_anim"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,6 +41,7 @@
         android:paddingHorizontal="64dp"
         android:text="@string/notification"
         android:textAllCaps="false"
+        android:visibility="gone"
         android:textColor="@color/black"
         android:textSize="@dimen/button_text"
         app:backgroundTint="@null"
@@ -59,6 +62,7 @@
         android:background="@drawable/round_button"
         android:paddingHorizontal="64dp"
         android:text="@string/share"
+        android:visibility="gone"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="@dimen/button_text"
@@ -69,5 +73,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notifyBtn" />
 
+    <TextView
+        android:id="@+id/textGet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        tools:text="testText" />
+
+    <TextView
+        android:id="@+id/textPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textGet"
+        tools:text="testPostText" />
+
+    <TextView
+        android:id="@+id/textGet2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPost"
+        tools:text="testTextGet" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
