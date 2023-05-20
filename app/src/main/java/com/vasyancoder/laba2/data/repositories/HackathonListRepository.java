@@ -1,6 +1,7 @@
 package com.vasyancoder.laba2.data.repositories;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -14,6 +15,7 @@ import com.vasyancoder.laba2.data.protocols.HackathonListProtocol;
 import com.vasyancoder.laba2.data.db.entities.HackathonListItem;
 
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +51,14 @@ public class HackathonListRepository implements HackathonListProtocol {
         Retrofit retrofit = RetrofitFactory.getRetrofit();
         PostAPI postAPI = retrofit.create(PostAPI.class);
         Call<Post> call = postAPI.getFirstPost();
+        return call;
+    }
+
+    @Override
+    public Call<Post> pushPost(Post post) {
+        Retrofit retrofit = RetrofitFactory.getRetrofit();
+        PostAPI postAPI = retrofit.create(PostAPI.class);
+        Call<Post> call = postAPI.pushPost(post);
         return call;
     }
 }

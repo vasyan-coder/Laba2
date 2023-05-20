@@ -8,6 +8,8 @@ import com.vasyancoder.laba2.data.models.Post;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.http.Body;
 
 public interface HackathonListProtocol {
 
@@ -16,5 +18,7 @@ public interface HackathonListProtocol {
     LiveData<List<HackathonListItem>> getHackathonList();
 
     Call<Post> getFirstPost();
+
+    Call<Post> pushPost(@Body Post post);
 
 }

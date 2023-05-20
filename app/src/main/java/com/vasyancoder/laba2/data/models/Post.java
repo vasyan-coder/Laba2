@@ -6,6 +6,14 @@ public class Post {
     private int id;
     private String title;
     private String body;
+
+    public Post(int userID, int id, String title, String body) {
+        this.userID = userID;
+        this.id = id;
+        this.title = title;
+        this.body = body;
+    }
+
     public int getUserId() {
         return userID;
     }

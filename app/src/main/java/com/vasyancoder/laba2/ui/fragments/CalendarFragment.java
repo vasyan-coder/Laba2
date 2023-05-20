@@ -30,6 +30,8 @@ import com.vasyancoder.laba2.databinding.FragmentCalendarBinding;
 import com.vasyancoder.laba2.ui.stateholder.viewmodel.CalendarViewModel;
 import com.vasyancoder.laba2.ui.stateholder.viewmodel.HackathonsListViewModel;
 
+import retrofit2.Response;
+
 public class CalendarFragment extends Fragment {
     private FragmentCalendarBinding binding;
 
@@ -54,6 +56,12 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onChanged(Post post) {
                 binding.textGet.setText("Get: " + post.getTitle());
+            }
+        });
+        viewModel.getPushResponseLiveData().observe(getViewLifecycleOwner(), new Observer<Post>() {
+            @Override
+            public void onChanged(Post postResponse) {
+                binding.textPost.setText("Post: " + postResponse.getTitle());
             }
         });
 
